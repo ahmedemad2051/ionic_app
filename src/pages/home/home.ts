@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {EditPersonPage} from '../edit-person/edit-person';
-import {FirebaseListObservable, AngularFireDatabase } from '@angular/fire/database';
+import {FirebaseListObservable, AngularFireDatabase} from '@angular/fire/database';
 import {map} from 'rxjs/operators';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {LoginPage} from "../login/login";
 import {ContactPage} from "../contact/contact";
+import {UserProfilePage} from "../user-profile/user-profile";
 
 @Component({
     selector: 'page-home',
@@ -44,6 +45,10 @@ export class HomePage {
            this.navCtrl.push(EditPersonPage,person);
             });
 
+    }
+
+    goToProfile(){
+        this.navCtrl.push(UserProfilePage);
     }
 
 

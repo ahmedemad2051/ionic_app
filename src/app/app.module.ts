@@ -19,6 +19,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { IonicStorageModule } from '@ionic/storage';
 
 const config = {
     apiKey: "AIzaSyDSTrXwJQa92qzh_sdAiHqU3czeR7Zn-JU",
@@ -48,7 +49,8 @@ const config = {
         AngularFireModule.initializeApp(config),
         AngularFireDatabaseModule,
         AngularFirestoreModule,
-        AngularFireAuthModule
+        AngularFireAuthModule,
+        IonicStorageModule.forRoot()
 
     ],
     bootstrap: [IonicApp],

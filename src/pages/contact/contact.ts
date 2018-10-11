@@ -6,6 +6,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import {HomePage} from "../home/home";
 import {UserProfilePage} from "../user-profile/user-profile";
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-contact',
@@ -13,13 +14,8 @@ import {UserProfilePage} from "../user-profile/user-profile";
 })
 export class ContactPage {
 
-  userInfo={
-    name:'',
-    email:'',
-    photoUrl:'',
-    loggedIn:false
-  };
-  constructor(public navCtrl: NavController,public fireAuth:AngularFireAuth) {
+
+  constructor(public navCtrl: NavController,public fireAuth:AngularFireAuth,public storage:Storage) {
 
   }
 
@@ -58,11 +54,11 @@ export class ContactPage {
   }
 
   navigation(res){
-    this.userInfo.name=res.user.displayName;
-    this.userInfo.email=res.user.email;
-    this.userInfo.photoUrl=res.user.photoURL;
-    this.userInfo.loggedIn=true;
-    console.log(this.userInfo);
-    this.navCtrl.setRoot(UserProfilePage,this.userInfo);
+    this.storage.set('name', res.user.displayName);
+    this.storage.set('email', res.user.email);
+    this.storage.set('photoUrl', res.user.photoURL);
+    this.storage.set('loggedIn', true);
+
+    this.navCtrl.setRoot(UserProfilePage);
   }
 }
